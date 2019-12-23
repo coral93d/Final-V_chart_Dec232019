@@ -1,0 +1,769 @@
+﻿@model IEnumerable<AspNetRoleBasedSecurity.Main>
+
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+   
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Dash/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Dash/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Dash/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Dash/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/Dash/vendors/chartist/chartist.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/Dash/css/style.css">
+
+    <script src="~/Dash/js/Canvas.js"></script>
+    <!-- End layout styles -->
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            
+            <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+                <a class="brand-logo-mini"><img src="~/Content/images/Infraction icon.png" alt="logo" style="width:200px;"/></a>
+                <h5 class="mb-0 font-weight-medium d-none d-lg-flex" style="font-size:20px;position:absolute;right:50px;color:rgba(31, 78, 121, 1);top:34px">OTC Dashboard</h5>
+                
+                
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav"> 
+                    <li class="nav-item nav-category"><span class="nav-link">Welcome Admin</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("GetAllPost", "Post")">                           
+                                <span class="menu-title">Home</span>
+                                <i class="icon-layers menu-icon"></i>
+                            </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Tags", "Post")">
+                            <span class="menu-title">Tags</span>
+                            <i class="icon-tag menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"href="@Url.Action("Users", "Post")">
+                            <span class="menu-title">Users</span>
+                            <i class="icon-user menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("UserProfile", "Post")">
+                            <span class="menu-title">About</span>
+                            <i class="icon-docs menu-icon"></i>
+                        </a>
+                    </li>
+                    
+                   
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-md-12 grid-margin">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="d-sm-flex align-items-baseline report-summary-header">
+                                                <h5 class="font-weight-semibold">Report Summary : @ViewBag.dropdownName</h5> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row report-inner-cards-wrapper">
+                                        <div class="col-md -6 col-xl report-inner-card">
+                                            <div class="inner-card-icon bg-info" style="position:relative;right:25px;width:34px;">
+                                                <i class="icon-bulb"></i>
+                                            </div>
+                                            <div class="inner-card-text">
+                                                <span class="report-title">Posted</span>
+                                                <h4>@ViewBag.Total_Infra</h4>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-6 col-xl report-inner-card">
+                                            <div class="inner-card-icon bg-success" style="position:relative;right:25px;width:34px;">
+                                                <i class="icon-like"></i>
+                                            </div>
+                                            <div class="inner-card-text">
+                                                <span class="report-title">Accepted</span>
+                                                <h4>@ViewBag.Accepted</h4>
+                                                
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="col-md-6 col-xl report-inner-card">
+                                            <div class="inner-card-icon bg-danger" style="position:relative;right:25px;width:34px;">
+                                                <i class="icon-dislike"></i>
+                                            </div>
+                                            <div class="inner-card-text">
+                                                <span class="report-title">Rejected</span>
+                                                <h4>@ViewBag.Rejected</h4>
+
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="col-md-6 col-xl report-inner-card">
+                                            <div class="inner-card-icon bg-warning" style="position:relative;right:25px;width:34px;">
+                                                <i class="icon-flag"></i>
+                                            </div>
+                                            <div class="inner-card-text">
+                                                <span class="report-title">Pending</span>
+                                                <h4>@ViewBag.Pending</h4>
+
+                                            </div>
+                                            
+                                        </div>
+
+
+                                        <div class="col-md-6 col-xl report-inner-card">
+                                            <div class="inner-card-icon bg-primary" style="position:relative;right:25px;width:34px;">
+                                                <i class="icon-envelope-open"></i>
+                                            </div>
+                                            <div class="inner-card-text">
+                                                <span class="report-title">Open</span>
+                                                <h4>@ViewBag.Open</h4>
+                                               
+                                            </div>
+                                            
+                                        </div>
+
+                                        
+
+                                        <div class="col-md-6 col-xl report-inner-card">
+                                            <div class="inner-card-icon bg-success" style="position:relative;right:25px;width:34px;">
+                                                <i class="icon-check"></i>
+                                            </div>
+                                            <div class="inner-card-text">
+                                                <span class="report-title">Close</span>
+                                                <h4>@ViewBag.Close</h4>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 grid-margin">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row income-expense-summary-chart-text">
+                                        <div class="col-xl-4">
+                                            <h5>Infractions per month</h5>
+                                                </div>
+                                       @using (Html.BeginForm())
+                                       {
+                                        <div class="col-md-12" style="position:relative;left:480px;">
+
+                                            <form method="POST" action="ChartContoller/Line">
+                                                <select id="dropdown" name="dropdownName">
+                                                    <option value="2018">Select</option>
+                                                    <option value="2010">All</option>                                         
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                  </select>
+                                            </form>                                          
+                                              
+                                             <input type="submit" value="Update" class="btn btn-default" />
+                                                </div>                                      
+                                              }
+                                        </div>
+                                    <div class="row income-expense-summary-chart mt-3">
+                                        <div class="col-md-12">
+                                            <div class="ct-chart" id="annual-revenue-by-category-pie-char" style="height:250px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Infraction Status(From_Track)
+                                        <button class="btn pull-left invisible" type="button" style="position:relative;left:120px" id="backButton"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i> Back</button></h4>
+                                    <div class="aligner-wrapper">
+                                       
+                                        <div id="chartContainer" style="height:300px"></div>
+                                      
+                                        <span class="tag custom-tag" id="Text" style="position: relative;left:280px; vertical-align:top;font-size:65%;font-style:italic;color:black">
+                                            Click on segment for further break-up
+                                        </span>
+                  
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body performane-indicator-card">
+                                    <div class="d-sm-flex">
+                                        <h4 class="card-title flex-shrink-1">Infractions posted</h4>
+                                        
+                                    </div>
+                                    
+                                    <div id="users-spl" class="ct-chart mt-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+                    <div class="row">
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Infraction Closure Status(To_Track)
+                                              </h4>
+                                    <div class="aligner-wrapper">
+                                        <div id="monthly-revenue-by-category-column-chart" style="height:250px"></div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body performane-indicator-card">
+                                    <div class="d-sm-flex">
+                                        <h4 class="card-title flex-shrink-1">Moderator Performance</h4>                                        
+                                    </div>
+                                    
+                                    <div id="PieChart" style="height:250px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-sm-flex align-items-center mb-4">
+                                        <h4 class="card-title mb-sm-0">Infraction Data</h4>
+                                       
+                                    </div>
+                                    <div class="table-responsive border rounded p-1">
+                                        <table class="table display" id="table_id">
+                                            <thead>
+                                                <tr>
+                                                    <th class="font-weight-bold">Title</th>
+                                                    <th class="font-weight-bold">From_Track</th>
+                                                    <th class="font-weight-bold">To_Track</th>
+                                                    <th class="font-weight-bold">Date</th>
+                                                    <th class="font-weight-bold">Status</th>
+                                                    <th class="font-weight-bold">Closure_Status</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               
+                                                   
+                                                    @foreach (var item in Model)
+
+                                                    {
+                                                       
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(modelItem => item.Title)</td>                                                          
+                                                            <td>@Html.DisplayFor(modelItem => item.From_Track)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.To_Track)</td>
+                                                      
+                                                            <td>@item.DatePosted.Value.ToString("dd. MM. yyyy")</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                                           
+                                                            @if (item.Final_Status == "0")
+                                                            {
+                                                                <td>
+                                                                    <div class="badge badge-danger p-2">Open   </div>
+                                                                </td>
+                                                            }else { 
+                                                            <td>
+                                                                <div class="badge badge-success p-2">Closed</div>
+                                                            </td>
+                                                            }
+                                                        </tr>
+                                                    }
+
+
+                                                       
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © @DateTime.Now.Year <a>Infraction Portal</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/Dash/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/Dash/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/Dash/vendors/moment/moment.min.js"></script>
+    <script src="~/Dash/vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Dash/vendors/chartist/chartist.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/Dash/js/off-canvas.js"></script>
+    <script src="~/Dash/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="~/Dash/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+
+    <script>
+
+        window.onload = function () {
+            // window.querySelectorAll()
+
+            ////////////////////Pie Chart----admin contri-Chart 5
+
+            var resultadmin = @Html.Raw(ViewBag.admin);
+            var dataPointsadmin =[];
+            for(var i = 0; i < resultadmin.length; i++){
+                dataPointsadmin.push({name:resultadmin[i].X,y:resultadmin[i].Y});
+            }
+
+            var totalVisitors = @ViewBag.Admin_count;
+            var chartPie = new CanvasJS.Chart("PieChart", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                legend: {
+                    fontFamily: "calibri",
+                    fontSize: 14,
+                    itemTextFormatter: function (e) {
+                        return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";
+                    }
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 180,
+                    showInLegend: "true",
+                    dataPoints: dataPointsadmin
+                }]
+            });
+            chartPie.render();
+
+
+
+
+            ////////////////////// column chart-4
+
+            //close
+            var resultclose = @Html.Raw(ViewBag.DataPoints4);
+            var dataPointsclose =[];
+            for(var i = 0; i < resultclose.length; i++){
+                dataPointsclose.push({label:resultclose[i].Label,y:resultclose[i].Y});
+            }
+            //open
+            var resultopen = @Html.Raw(ViewBag.DataPoints5);
+            var dataPointsopen =[];
+            for(var i = 0; i < resultopen.length; i++){
+                dataPointsopen.push({label:resultopen[i].Label,y:resultopen[i].Y});
+            }
+
+
+            var chartt = new CanvasJS.Chart("monthly-revenue-by-category-column-chart", {
+                animationEnabled: true,
+                exportEnabled: true,
+                axisY: {
+                    title: "No of Infractions",
+                    titleFontColor: "#4F81BC",
+                    lineColor: "#4F81BC",
+                    labelFontColor: "#4F81BC",
+                    tickColor: "#4F81BC",
+                    gridColor: "white"
+                },
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor:"pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: [{
+                    type: "column",
+                    name: "Close",
+                    legendText: "Close",
+                    showInLegend: true,
+                    dataPoints:dataPointsclose
+                },
+                {
+                    type: "column",
+                    name: "Open",
+                    legendText: "Open",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    dataPoints:dataPointsopen
+                }]
+            });
+            chartt.render();
+
+            function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chartt.render();
+            }
+
+
+
+            ///////////////////////////////Spline Area chart 1
+
+            //MC
+            var result = @Html.Raw(ViewBag.DataPoints1);
+            var dataPoints =[];
+            for(var i = 0; i < result.length; i++){
+                dataPoints.push({x:result[i].Label, y:result[i].Y,label:result[i].X});
+            }
+            //ER
+            var result1 = @Html.Raw(ViewBag.DataPoints2);
+            var dataPoints1 =[];
+            for(var i = 0; i < result1.length; i++){
+                dataPoints1.push({x:result1[i].Label, y:result1[i].Y,label:result1[i].X});
+            }
+            //PC
+            var result2 = @Html.Raw(ViewBag.DataPoints3);
+            var dataPoints2 =[];
+            for(var i = 0; i < result2.length; i++){
+                dataPoints2.push({x:result2[i].Label, y:result2[i].Y,label:result2[i].X});
+            }
+            //RQ
+            var result10 = @Html.Raw(ViewBag.DataPoints10);
+            var dataPoints10 =[];
+            for(var i = 0; i < result10.length; i++){
+                dataPoints10.push({x:result10[i].Label, y:result10[i].Y,label:result10[i].X});
+            }
+            //RON_PURR
+            var result11 = @Html.Raw(ViewBag.DataPoints11);
+            var dataPoints11 =[];
+            for(var i = 0; i < result11.length; i++){
+                dataPoints11.push({x:result11[i].Label, y:result11[i].Y,label:result11[i].X});
+            }
+
+            var chartSpline = new CanvasJS.Chart("annual-revenue-by-category-pie-char", {
+                zoomEnabled: true,
+                height:250,
+                animationEnabled: true,
+                animationDuration: 2000,
+                exportFileName: "Spline Area",  //Give any name accordingly
+                exportEnabled: true,
+                axisX: {
+
+                    minimum: 0,
+                    labelAngle: 1
+
+
+                },
+                axisY: {
+                    includeZero: false,
+                    gridColor: "white",
+                },
+                toolTip: {
+                    shared: true
+                },
+                data: [
+                {
+                    type: "splineArea",
+                    name: "MC",
+                    showInLegend: true,
+                    dataPoints:dataPoints,
+                },
+                {
+                    type: "splineArea",
+                    name: "ER",
+                    showInLegend: true,
+                    dataPoints:dataPoints1,
+                },
+                {
+                    type: "splineArea",
+                    name: "PC",
+                    showInLegend: true,
+                    dataPoints:dataPoints2,
+                },
+                {
+                    type: "splineArea",
+                    name: "RQ",
+                    showInLegend: true,
+                    dataPoints:dataPoints10,
+                },
+                {
+                    type: "splineArea",
+                    name: "RonPurr",
+                    showInLegend: true,
+                    dataPoints:dataPoints11,
+                }
+
+                ]
+
+
+
+            });
+            chartSpline.render();
+
+            //////////////////////////////drilll down
+
+            //Total
+            var result3 = @Html.Raw(ViewBag.NewVsReturningVisitors);
+            var dataPoints3 =[];
+            for(var i = 0; i < result3.length; i++){
+                dataPoints3.push({name:result3[i].Name,y:result3[i].Y});
+            }
+            //MC
+            var result_mc = @Html.Raw(ViewBag.NewVisitors);
+            var dataPoints_mc =[];
+            for(var i = 0; i < result_mc.length; i++){
+                dataPoints_mc.push({label:result_mc[i].X,y:result_mc[i].Y});
+            }
+            //ER
+            var result_er = @Html.Raw(ViewBag.ReturningVisitors);
+            var dataPoints_er =[];
+            for(var i = 0; i < result_er.length; i++){
+                dataPoints_er.push({label:result_er[i].X,y:result_er[i].Y});
+            }
+            //PC
+            var result_Pc = @Html.Raw(ViewBag.Pc);
+            var dataPoints_Pc =[];
+            for(var i = 0; i < result_Pc.length; i++){
+                dataPoints_Pc.push({label:result_Pc[i].X,y:result_Pc[i].Y});
+            }
+            //RQ
+            var result_rq = @Html.Raw(ViewBag.rq);
+            var dataPoints_rq =[];
+            for(var i = 0; i < result_rq.length; i++){
+                dataPoints_rq.push({label:result_rq[i].X,y:result_rq[i].Y});
+            }
+            //RON_PURR
+            var result_ron = @Html.Raw(ViewBag.ron);
+            var dataPoints_ron =[];
+            for(var i = 0; i < result_ron.length; i++){
+                dataPoints_ron.push({label:result_ron[i].X,y:result_ron[i].Y});
+            }
+
+
+            var totalVisitors = @ViewBag.Drill_count;
+            var visitorsData = {
+                "New vs Returning Visitors": [{
+                    click: visitorsChartDrilldownHandler,
+                    cursor: "pointer",
+                    explodeOnClick: false,
+                    innerRadius: "75%",
+                    legendMarkerType: "square",
+                    name: "New vs Returning Visitors",
+                    radius: "100%",
+                    showInLegend: true,
+                    exportEnabled: true,
+                    startAngle: 90,
+                    type: "doughnut",
+                    dataPoints:dataPoints3
+                }],
+                "Medical claims": [{
+
+                    name: "Medical claims",
+                    type: "column",
+                    xValueType: "dateTime",
+                    dataPoints: dataPoints_mc
+                }],
+                "Electronic Rejections": [{
+
+                    name: "Electronic Rejections",
+                    type: "column",
+                    xValueType: "dateTime",
+                    dataPoints:  dataPoints_er
+                }],
+
+                "Payor Change": [{
+
+                    name: "Payor Change",
+                    type: "column",
+                    xValueType: "dateTime",
+                    dataPoints:  dataPoints_Pc
+                }],
+
+                "RQ": [{
+
+                name: "RQ",
+                type: "column",
+                xValueType: "dateTime",
+                dataPoints:  dataPoints_rq
+
+                }],
+
+                "Ron Purr": [{
+
+                    name: "RonPurr",
+                    type: "column",
+                    xValueType: "dateTime",
+                    dataPoints:  dataPoints_ron
+                }]
+
+            };
+
+            var newVSReturningVisitorsOptions = {
+
+                animationEnabled: true,
+                theme: "light2",
+                legend: {
+                    fontFamily: "calibri",
+                    fontSize: 14,
+                    itemTextFormatter: function (e) {
+                        return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";
+                    }
+                },
+                data: []
+            };
+
+            var visitorsDrilldownedChartOptions = {
+
+                animationEnabled: true,
+                theme: "light2",
+                axisX: {
+                    labelFontColor: "#717171",
+                    lineColor: "#a2a2a2",
+                    tickColor: "#a2a2a2"
+                },
+                axisY: {
+                    gridThickness: 0,
+                    includeZero: false,
+                    labelFontColor: "#717171",
+                    lineColor: "#a2a2a2",
+                    tickColor: "#a2a2a2",
+                    lineThickness: 1
+                },
+                data: []
+            };
+
+            var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+            chart.options.data = visitorsData["New vs Returning Visitors"];
+            chart.render();
+
+            function visitorsChartDrilldownHandler(e) {
+                chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
+                chart.options.data = visitorsData[e.dataPoint.name];
+                chart.options.title = { text: e.dataPoint.name }
+                chart.render();
+                $("#backButton").toggleClass("invisible");
+                $("#Text").toggleClass("invisible");
+            }
+
+            $("#backButton").click(function () {
+                $(this).toggleClass("invisible");
+                chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+                chart.options.data = visitorsData["New vs Returning Visitors"];
+                $("#Text").toggleClass("invisible");
+                chart.render();
+            });
+
+
+
+            /////////////////////////////////////////////////////////////////////Line chart-3
+
+           
+            var resultArea = @Html.Raw(ViewBag.DataPointsArea);
+            var dataPointsArea =[];
+            for(var i = 0; i < resultArea.length; i++){
+                dataPointsArea.push({label:resultArea[i].X,y:resultArea[i].Y});
+            }
+
+            var chartAreaa = new CanvasJS.Chart("users-spl", {
+                height:250,
+                animationEnabled: true,
+                exportEnabled: true,
+                axisY: {
+                    includeZero: false,
+                    gridColor: "white",
+                },
+                data: [{
+                    type: "line",
+                    lineDashType: "dash",
+                    color: "#747891",
+                    lineColor: "#383e62",
+                    markerColor: "#383e62",
+                    dataPoints: dataPointsArea
+                }]
+            });
+            chartAreaa.render();
+
+
+
+        }
+
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/DataTables/datatables.css">
+
+<script type="text/javascript" charset="utf8" src="~/Content/DataTables/datatables.js"></script>
+
+<script>
+
+$(document).ready( function () {
+
+
+
+    $("#table_id").DataTable();
+
+
+
+} );
+
+</script>
+
+

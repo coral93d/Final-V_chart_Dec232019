@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8261394e338841c68ad394ca5dfa525c" Name="Diagram1">
+        <EntityTypeShape EntityType="LineModel.Admin_Contribution" Width="1" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.Admin_Contribution19" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.Admin_Contribution20" Width="1.875" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LineModel.Close" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LineModel.Drill_er" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.Drill_mc" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LineModel.Drill_pc" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.er" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="LineModel.ER_overall" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="LineModel.Infra_by_track" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LineModel.Infraction" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="LineModel.Line_Close" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="LineModel.Line_Open" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.mc" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="LineModel.MC_overall" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="LineModel.Open" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="LineModel.pc" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="LineModel.PC_overall" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.Ron" Width="1.5" PointX="4.125" PointY="9.5" />
+        <EntityTypeShape EntityType="LineModel.Ron_overall" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LineModel.RQ" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="LineModel.RQ_overall" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="LineModel.Total_Area" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LineModel.Main" Width="1.5" PointX="2.5" PointY="8.625" />
+        <EntityTypeShape EntityType="LineModel.Line_overall" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="LineModel.Drill_Ron" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="LineModel.Drill_RQ" Width="1.5" PointX="5.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
